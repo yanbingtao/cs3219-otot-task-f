@@ -53,10 +53,10 @@ app.get("/api/redis/contacts", async (req, res) => {
     redisClient.get('names', async(error, names) => {
         if(error) { console.error(error); }
         if (names != null) {
-            console.log("Cashe hit!")
+            console.log("Cache hit!")
             return res.json(JSON.parse(names))
         } else {
-            console.log("Cashe miss!")
+            console.log("Cache miss!")
             const { data } = await axios.get(
                 "http://localhost:8080/api/contacts",
                 { params: {name}}
